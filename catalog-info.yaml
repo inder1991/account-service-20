@@ -2,6 +2,8 @@ apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
   name: "account-service-20"
+  annotations:
+    github.com/project-slug: "account-service-20"
 spec:
   type: service
   owner: user:guest
