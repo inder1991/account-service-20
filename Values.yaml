@@ -1,0 +1,21 @@
+roleBindingsAndSubjects:
+  role-1:
+    - kind: ServiceAccount
+      name: service-account-1
+      namespace: default
+  role-2:
+    - kind: LDAPUser
+      name: ldap-user-1
+    - kind: LDAPGroup
+      name: ldap-group-1
+
+clusterRolesAndSubjects:
+  cluster-role-1:
+    - kind: ServiceAccount
+      name: service-account-2
+      namespace: custom-namespace
+  cluster-role-2:
+    - kind: LDAPUser
+      name: ldap-user-2
+    - kind: LDAPGroup
+      name: ldap-group-2
