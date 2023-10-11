@@ -1,0 +1,18 @@
+{{- range $roleName, $subjects := .Values.clusterRolesAndSubjects }}
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: {{ printf "%s-cluster-role-binding" $roleName | trunc 63 | trimSuffix "-" }}
+subjects:
+{{- range $subject := $subjects }}
+  - kind: {{ $subject.kind }}
+    name: {{ $subject.name }}
+    {{- if $subject.namespace }}
+    namespace: {{ $subject.namespace }}
+    {{- end }}
+{{- end }}
+roleRef:
+  kind: ClusterRole
+  name: {{ $roleName }}
+  apiGroup: rbac.authorization.k8s.io
+{{- end }}
